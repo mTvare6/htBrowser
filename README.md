@@ -8,6 +8,9 @@
 <br/>
 <br/>
 <br/>
+<br/>
+<br/>
+<br/>
 ### Keybind to pull up the window:
 
 <p align="center">
@@ -15,11 +18,7 @@
   <strong>or</strong> <br/>
 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>~</kbd>
 </p>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+
 
 ## Building
 ##### To setup
