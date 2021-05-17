@@ -11,7 +11,7 @@
 <br/>
 <br/>
 <br/>
-### Keybind to pull up the window:
+<h3 align="center"> Keybind to pull up the window: </h3>
 
 <p align="center">
 <kbd>CMD</kbd>+<kbd>Shift</kbd>+<kbd>~</kbd> <br/>
