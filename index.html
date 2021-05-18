@@ -3,12 +3,31 @@
   <head>
     <meta charset="UTF-8">
     <title> htBrowser </title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+      h1 {
+        font-family: 'Source Sans Pro', sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+ :w      text-align: center;
+        min-height: 100vh;
+      }
+    </style>
   </head>
   <body>
-    <h1> Welcome to hTBrowser! </h1>
+    <h1> Welcome to hTbrowser! </h1>
     <script>
-      window.location.replace("http://duckduckgo.com");
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      async function move(){
+        await sleep(500);
+        window.location.replace("http://duckduckgo.com");
+      }
+      move()
     </script> 
-      <script src="./renderer.js"></script>
+    <script src="./renderer.js"></script>
   </body>
-  
+
