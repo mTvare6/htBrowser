@@ -10,7 +10,6 @@ function createWindow () {
     //resizable:false,
     darkTheme: true,
     title: "htBrowser",
-    focusable: false,
     alwaysOnTop: true,
 
     webPreferences: {
@@ -38,7 +37,7 @@ app.whenReady().then(() => {
     }
     else{
       mainWindow.show()
-      app.focus()
+      mainWindow.focus()
       hidden = false;
     }
   })
