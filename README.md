@@ -14,7 +14,7 @@
 <h3 align="center"> Keybind to pull up the window: </h3>
 
 <p align="center">
-<kbd>CMD</kbd>+<kbd>Shift</kbd>+<kbd>~</kbd> <br/>
+<kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>~</kbd> <br/>
   <strong>or</strong> <br/>
 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>~</kbd>
 </p>
