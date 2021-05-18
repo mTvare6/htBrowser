@@ -1,25 +1,29 @@
 const {app, BrowserWindow, globalShortcut} = require('electron')
 const path = require('path')
-//const config = require app.getPath("home")+".config/htBrowser/config.json";
+
+const config = require(`${app.getPath("home")}/.config/htBrowser/config.json`)
+
 
 function createWindow () {
-  const mainWindow = new BrowserWindow({
-    width: 650,
-    height: 400,
-    center: true,
-    frame: false,
-    //resizable:false,
-    darkTheme: true,
-    title: "htBrowser",
-    alwaysOnTop: true,
+  const mainWindow = new BrowserWindow(
+    {
+      width: (config.window || {}).width || 640,
+      height: (config.window || {}).height || 640,
+      center: true,
+      frame: false,
+      //resizable:false,
+      darkTheme: true,
+      title: "htBrowser",
+      alwaysOnTop: true,
 
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      webPreferences: {
+        preload: path.join(__dirname, 'preload.js')
+      }
     }
-  })
+  )
 
 
-  mainWindow.loadFile('index.html')
+  mainWindow.loadURL( config.defaultURL || "https://duckduckgo.com")
   return mainWindow;
 }
 
