@@ -34,12 +34,12 @@ app.whenReady().then(() => {
   const ret = globalShortcut.register('CmdOrCtrl+Shift+~', () => {
     if (!hidden){
       mainWindow.hide()
-      console.log("Hid the window")
+      console.log("Received hide bind")
       hidden = true;
     }
     else{
       mainWindow.show()
-      console.log("Shown the window")
+      console.log("Received show bind")
       mainWindow.focus()
       hidden = false;
     }
