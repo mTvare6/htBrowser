@@ -1,8 +1,7 @@
 const {app, BrowserWindow, globalShortcut} = require('electron')
 const path = require('path')
 
-const config = require(`${app.getPath("home")}/.config/htBrowser/config.json`)
-
+const config =  require((process.platform==="linux")?`${app.getPath("appData")}/htBrowser/config.json`:`${app.getPath("home")}/.config/htBrowser/config.json`)
 
 function createWindow () {
   const mainWindow = new BrowserWindow(
