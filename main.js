@@ -20,31 +20,24 @@ function createWindow () {
 
 
   mainWindow.loadFile('index.html')
-
+  return mainWindow;
 }
 
 hidden = false;
 
 app.whenReady().then(() => {
-  createWindow()
-  app.hide()
-  hidden = true;
+  let mainWindow = createWindow()
 
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
   const ret = globalShortcut.register('CmdOrCtrl+Shift+~', () => {
     if (!hidden){
-      if(process.platform==='darwin'){
-        app.hide()
-      }
-      else{
-        app.quit()
-      }
+      mainWindow.hide()
       hidden = true;
     }
     else{
-      app.show()
+      mainWindow.show()
       app.focus()
       hidden = false;
     }
