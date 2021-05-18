@@ -19,6 +19,27 @@
 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>~</kbd>
 </p>
 
+#### Configuration:
+htBrowser looks for config under `$XDG_CONFIG_HOME/htBrowser/config.json` on linux and `$HOME/.config/htBrowser/config.json` on macOS and window \
+The following is a example config
+```json
+{
+  "window": {
+    "width": 640,
+    "height": 400
+  },
+  "defaultURL": "https://duckduckgo.com",
+  "customURLS": [
+    {
+      "discord": "https://discord.com/developers/docs/intro"
+    }
+  ]
+}
+```
+**window** part should be self-explantory \
+**defaultURL** is the url the browser switches by default which are overriden if customURL matches \
+**customURLS** is a set of `WM_CLASS` and url paired, where the browser is launched if the current `WM_CLASS` value is one of those, the value of url is what the browser switches to.
+
 
 ## Building
 ##### To setup
