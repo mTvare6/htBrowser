@@ -1,5 +1,6 @@
 const {app, BrowserWindow, globalShortcut} = require('electron')
 const path = require('path')
+//const config = require app.getPath("home")+".config/htBrowser/config.json";
 
 function createWindow () {
   const mainWindow = new BrowserWindow({
@@ -33,10 +34,12 @@ app.whenReady().then(() => {
   const ret = globalShortcut.register('CmdOrCtrl+Shift+~', () => {
     if (!hidden){
       mainWindow.hide()
+      console.log("Hid the window")
       hidden = true;
     }
     else{
       mainWindow.show()
+      console.log("Shown the window")
       mainWindow.focus()
       hidden = false;
     }
