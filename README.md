@@ -20,7 +20,12 @@
 </p>
 
 #### Configuration:
-htBrowser looks for config under `$XDG_CONFIG_HOME/htBrowser/config.json` on linux and `$HOME/.config/htBrowser/config.json` on macOS and window \
+htBrowser looks for config under
+- `$XDG_CONFIG_HOME/htBrowser/config.json` on linux 
+- `$HOME/.config/htBrowser/config.json` on macOS 
+- `%%APPDATA%%/htBrowser/config.json` on windows
+
+
 The following is a example config
 ```json
 {
@@ -51,7 +56,7 @@ npm install
 ```
 npm start
 ```
-##### To build install electron-package
+##### To build install electron-package or download from github workflows
 
 
 
