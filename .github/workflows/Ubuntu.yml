@@ -1,0 +1,34 @@
+name: Ubuntu
+
+on:
+  push:
+    branches: [ main ]
+    
+  pull_request:
+    branches: [ main ]
+    
+jobs:    
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: update apt
+      run: sudo apt-get update
+    - name: install x11 dependencies
+      run: sudo apt install llibxtst-dev libxss-dev libxext6-dbg libx11-dev
+    - name: npm install
+      run: npm install
+    - name: linux-x64
+      run: electron-packager . htBrowser --platform=linux --arch=x64
+    - name: linux-arm64
+      run: electron-packager . htBrowser --platform=linux --arch=arm64
+    - name: tar x64
+      run: tar czf linux-x64.tar.gz --directory=htBrowser-linux-x64 .
+    - name: tar arm64
+      run: tar czf linux-arm64.tar.gz --directory=htBrowser-linux-arm64 .
+      
+    - name: export binaries
+      uses: actions/upload-artifact@v2
+      with:
+        name: htBrowser
+        path: ./*.tar.gz
