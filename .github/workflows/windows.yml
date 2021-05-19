@@ -1,0 +1,34 @@
+name: windows
+
+on:
+  push:
+    branches: [ main ]
+    
+  pull_request:
+    branches: [ main ]
+    
+jobs:    
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: npm install
+      run: npm install
+      shell: cmd
+    - name: darwin-x64
+      run: electron-packager . htBrowser --platform=win32 --arch=x64
+      shell: cmd
+    - name: darwin-arm64
+      run: electron-packager . htBrowser --platform=win32 --arch=arm64
+      shell: cmd
+    - name: tar x64
+      run: tar czf win32-x64.tar.gz --directory=htBrowser-win32-x64 .
+      shell: cmd
+    - name: tar arm64
+      run: tar czf win32-arm64.tar.gz --directory=htBrowser-win32-arm64 
+      shell: cmd
+    - name: export binaries
+      uses: actions/upload-artifact@v2
+      with:
+        name: htBrowser
+        path: ./*.tar.gz
