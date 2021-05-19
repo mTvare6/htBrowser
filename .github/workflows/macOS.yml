@@ -12,6 +12,8 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
+    - name: npm install -g electron-packager
+      run: npm install -g electron-packager
     - name: npm install
       run: npm install
     - name: darwin-x64
