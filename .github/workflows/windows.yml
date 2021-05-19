@@ -25,7 +25,7 @@ jobs:
       run: tar czf win32-x64.tar.gz --directory=htBrowser-win32-x64 .
       shell: cmd
     - name: tar arm64
-      run: tar czf win32-arm64.tar.gz --directory=htBrowser-win32-arm64 
+      run: tar czf win32-arm64.tar.gz --directory=htBrowser-win32-arm64 .
       shell: cmd
     - name: export binaries
       uses: actions/upload-artifact@v2
