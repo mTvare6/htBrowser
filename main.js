@@ -1,13 +1,35 @@
 const activeWindows = require('electron-active-window');
-
+var fs = require('fs');
 
 
 
 const {app, BrowserWindow, globalShortcut} = require('electron')
 const path = require('path')
 
-const config =  require((process.platform==="linux")?`${app.getPath("appData")}/htBrowser/config.json`:`${app.getPath("home")}/.config/htBrowser/config.json`)
+const configDir = (process.platform!=="darwin")?`${app.getPath("appData")}/htBrowser`:`${app.getPath("home")}/.config/htBrowser`
+const configPath = `${configDir}/config.json`
 
+if (!fs.existsSync(configDir)){
+  fs.mkdir(configDir)
+}
+
+if (!fs.existsSync(configPath)){
+  const exampleConfig = JSON.stringify({
+    "window": {
+      "width": 640,
+      "height": 400
+    },
+    "defaultURL": "https://duckduckgo.com",
+    "customURLS": [
+      {
+        "discord": "https://discord.com/developers/docs/intro"
+      }
+    ]
+  })
+  fs.writeFileSync(configPath, exampleConfig)
+}
+
+const config =  require(configPath)
 function createWindow (currentWMClass) {
 
   const mainWindow = new BrowserWindow(
@@ -29,7 +51,7 @@ function createWindow (currentWMClass) {
   let urlToLoad = (config.defaultURL || "https://duckduckgo.com");
 
   for (index in  (config.customURLS || {} )){
-    for (const [wmClass, url] of Object.entries(config.customURLS[index])) {
+    for (const [wmClass, url] of Object.entries( config.customURLS[index]  )) {
       if (wmClass.toLowerCase()==currentWMClass.toLowerCase()){
         urlToLoad=url
       }
@@ -49,19 +71,17 @@ app.whenReady().then(() => {
   activeWindows().getActiveWindow().then((result)=>{
     mainWindow = createWindow(result["windowName"])
   });
-  
+
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
   const ret = globalShortcut.register('CmdOrCtrl+Shift+~', () => {
     if (!hidden){
       mainWindow.hide()
-      console.log("Received hide bind")
       hidden = true;
     }
     else{
       mainWindow.show()
-      console.log("Received show bind")
       mainWindow.focus()
       hidden = false;
     }
