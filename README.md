@@ -62,6 +62,5 @@ npm start
 
 
 
-## Todo: 
- - Add configurable shortcuts
- - Custom naviator instead of simply redirecting to duckduckgo
+## Caveats:
+##### Currently in order to work under BSPwm's you need to set a rule so `hTbrowser` isn't resized or moved, I am trying to find workarounds 😩
