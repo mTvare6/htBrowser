@@ -17,10 +17,10 @@ jobs:
     - name: npm install
       run: npm install
       shell: cmd
-    - name: darwin-x64
+    - name: windows-x64
       run: electron-packager . htBrowser --platform=win32 --arch=x64
       shell: cmd
-    - name: darwin-arm64
+    - name: windows-arm64
       run: electron-packager . htBrowser --platform=win32 --arch=arm64
       shell: cmd
     - name: tar x64
