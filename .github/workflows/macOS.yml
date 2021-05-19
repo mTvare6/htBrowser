@@ -1,0 +1,30 @@
+name: macOS
+
+on:
+  push:
+    branches: [ main ]
+    
+  pull_request:
+    branches: [ main ]
+    
+jobs:    
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: npm install
+      run: npm install
+    - name: darwin-x64
+      run: electron-packager . htBrowser --platform=darwin --arch=x64
+    - name: darwin-arm64
+      run: electron-packager . htBrowser --platform=darwin --arch=arm64
+    - name: tar x64
+      run: tar czf darwin-x64.tar.gz --directory=htBrowser-darwin-x64 .
+    - name: tar arm64
+      run: tar czf darwin-arm64.tar.gz --directory=htBrowser-darwin-arm64 .
+      
+    - name: export binaries
+      uses: actions/upload-artifact@v2
+      with:
+        name: htBrowser
+        path: ./*.tar.gz
