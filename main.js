@@ -1,6 +1,6 @@
 const activeWindows = require('electron-active-window');
 var fs = require('fs');
-
+var isAccelerator = require("electron-is-accelerator");
 
 
 const {app, BrowserWindow, globalShortcut} = require('electron')
@@ -19,6 +19,7 @@ if (!fs.existsSync(configPath)){
       "width": 640,
       "height": 400
     },
+    "keyBind": "CmdOrCtrl+Shift+~",
     "defaultURL": "https://duckduckgo.com",
     "customURLS": [
       {
@@ -75,7 +76,11 @@ app.whenReady().then(() => {
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
-  const ret = globalShortcut.register('CmdOrCtrl+Shift+~', () => {
+  let configAcc = (config["keyBind"]||'CmdOrCtrl+Shift+~')
+  if (!isAccelerator(configAcc)){
+    console.log(`Accelerator ${configAcc} is not valid check https://www.electronjs.org/docs/api/accelerator#accelerator using the default accelerator instead`)
+  }
+  const ret = globalShortcut.register(isAccelerator(configAcc)?configAcc:'CmdOrCtrl+Shift+~', () => {
     if (!hidden){
       mainWindow.hide()
       hidden = true;
