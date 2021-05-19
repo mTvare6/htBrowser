@@ -22,11 +22,9 @@ jobs:
       run: electron-packager . htBrowser --platform=linux --arch=x64
     - name: linux-arm64
       run: electron-packager . htBrowser --platform=linux --arch=arm64
-    - name: tar
+    - name: tar x64
       run: tar czf linux-x64.tar.gz --directory=htBrowser-linux-x64 .
-    - name: tar
-      run: tar czf linux-x64.tar.gz --directory=htBrowser-linux-x64 .
-    - name: tar
+    - name: tar arm64
       run: tar czf linux-arm64.tar.gz --directory=htBrowser-linux-arm64 .
       
     - name: export binaries
@@ -34,7 +32,3 @@ jobs:
       with:
         name: htBrowser
         path: ./*.tar.gz
-          
-    - name: make clean
-      run: make clean
-      
