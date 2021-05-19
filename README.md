@@ -34,6 +34,7 @@ The following is a example config
     "height": 400
   },
   "defaultURL": "https://duckduckgo.com",
+  "keyBind":"CmdOrCtrl+Shift+~",
   "customURLS": [
     {
       "discord": "https://discord.com/developers/docs/intro"
@@ -42,6 +43,7 @@ The following is a example config
 }
 ```
 **window** part should be self-explantory \
+**keyBind** is the keybind which pulls up the window, the string must be a valid [`accelator`](https://www.electronjs.org/docs/api/accelerator#accelerator)\
 **defaultURL** is the url the browser switches by default which are overriden if customURL matches \
 **customURLS** is a set of `WM_CLASS` and url paired, where the browser is launched if the current `WM_CLASS` value is one of those, the value of url is what the browser switches to.
 
