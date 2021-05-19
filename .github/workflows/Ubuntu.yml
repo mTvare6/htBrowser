@@ -17,7 +17,7 @@ jobs:
     - name: install x11 dependencies
       run: sudo apt install libxtst-dev libxss-dev libxext6-dbg libx11-dev
     - name: npm install -g electron-packager
-      run: npm install -g electron-packager
+      run: sudo npm install -g electron-packager
     - name: npm install
       run: npm install
     - name: linux-x64
