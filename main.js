@@ -78,7 +78,7 @@ app.whenReady().then(() => {
   })
   let configAcc = (config["keyBind"]||'CmdOrCtrl+Shift+~')
   if (!isAccelerator(configAcc)){
-    console.log(`Accelerator ${configAcc} is not valid check https://www.electronjs.org/docs/api/accelerator#accelerator using the default accelerator instead`)
+    console.log(`Accelerator ${configAcc} is not valid check https://www.electronjs.org/docs/api/accelerator#accelerator\n Using the default accelerator instead`)
   }
   const ret = globalShortcut.register(isAccelerator(configAcc)?configAcc:'CmdOrCtrl+Shift+~', () => {
     if (!hidden){
