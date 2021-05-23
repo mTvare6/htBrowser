@@ -30,6 +30,8 @@ if (!fs.existsSync(configPath)){
   fs.writeFileSync(configPath, exampleConfig)
 }
 
+hidden = true;
+
 const config =  require(configPath)
 function createWindow (currentWMClass) {
 
@@ -39,6 +41,7 @@ function createWindow (currentWMClass) {
       height: (config.window || {}).height || 640,
       center: true,
       frame: false,
+      show: !hidden,
       //resizable:false,
       darkTheme: true,
       title: "htBrowser",
@@ -65,10 +68,9 @@ function createWindow (currentWMClass) {
   return mainWindow;
 }
 
-hidden = false;
 
 app.whenReady().then(() => {
-  let mainWindow
+  let mainWindow;
   activeWindows().getActiveWindow().then((result)=>{
     mainWindow = createWindow(result["windowName"])
   });
