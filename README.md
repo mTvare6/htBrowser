@@ -63,4 +63,4 @@ npm start
 
 
 ## Caveats:
-##### Currently in order to work under BSPwm's you need to set a rule so `hTbrowser` isn't resized or moved, I am trying to find workarounds 😩
+##### Currently in order to work under BSPwm's you need to set a rule so `hTbrowser` isn't resized or moved, I am trying to find workarounds
