@@ -58,7 +58,7 @@ npm install
 ```
 npm start
 ```
-##### To build install electron-package or download from github workflows
+##### To build install electron-packager or download from github workflows
 
 
 
